@@ -4,13 +4,11 @@
  */
 package com.intel.mtwilson.tpm.endorsement.client.jaxrs;
 
-import com.intel.mtwilson.tpm.endorsement.client.jaxrs.*;
 import com.intel.mtwilson.jaxrs2.client.MtWilsonClient;
 import com.intel.mtwilson.tpm.endorsement.model.TpmEndorsement;
 import com.intel.mtwilson.tpm.endorsement.model.TpmEndorsementCollection;
 import com.intel.mtwilson.tpm.endorsement.model.TpmEndorsementFilterCriteria;
 import com.intel.mtwilson.tpm.endorsement.model.TpmEndorsementLocator;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Properties;
 import javax.ws.rs.WebApplicationException;

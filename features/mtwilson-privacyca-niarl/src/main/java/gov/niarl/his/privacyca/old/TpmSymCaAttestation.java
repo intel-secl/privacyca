@@ -15,7 +15,6 @@ package gov.niarl.his.privacyca.old;
 
 import java.io.ByteArrayInputStream;
 import java.security.cert.*;
-//import java.util.*;
 import java.io.*;
 import java.security.*;
 import javax.crypto.*;

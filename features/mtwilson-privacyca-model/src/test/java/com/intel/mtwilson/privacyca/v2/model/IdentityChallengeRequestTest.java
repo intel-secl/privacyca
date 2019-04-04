@@ -7,8 +7,6 @@ package com.intel.mtwilson.privacyca.v2.model;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intel.mtwilson.core.common.tpm.model.IdentityRequest;
-import org.apache.commons.codec.DecoderException;
-import org.apache.commons.codec.binary.Hex;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

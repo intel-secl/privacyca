@@ -517,7 +517,6 @@ public class TpmIdentityRequest {
 			PrivacyCaException, 
 			TpmUtils.TpmBytestreamResouceException {
 		String instance = symKey.getAlgorithmStr() + "/" + symKey.getEncSchemeStr();
-		//System.out.println("Instance: " + instance);
 		Cipher symCipher = Cipher.getInstance(instance);
 		IvParameterSpec ivSpec = new IvParameterSpec(symAlgorithm.getSubParams().getByteData());
 		symCipher.init(Cipher.DECRYPT_MODE, symKey.getSecretKey(), ivSpec);

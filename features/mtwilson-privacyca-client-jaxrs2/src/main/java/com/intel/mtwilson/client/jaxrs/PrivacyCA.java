@@ -5,12 +5,10 @@
 package com.intel.mtwilson.client.jaxrs;
 
 import com.intel.mtwilson.jaxrs2.client.MtWilsonClient;
-import com.intel.dcsg.cpg.configuration.Configuration;
 import com.intel.dcsg.cpg.tls.policy.TlsConnection;
 import com.intel.mtwilson.jaxrs2.mediatype.CryptoMediaType;
 import com.intel.mtwilson.core.common.tpm.model.IdentityProofRequest;
 import com.intel.mtwilson.privacyca.v2.model.*;
-import java.net.URL;
 import java.security.cert.X509Certificate;
 import java.util.Properties;
 import javax.ws.rs.client.Entity;

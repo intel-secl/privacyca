@@ -5,7 +5,6 @@
 package com.intel.mtwilson.tpm.endorsement.model;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import com.intel.dcsg.cpg.io.UUID;
 import com.intel.dcsg.cpg.validation.Regex;
 import com.intel.dcsg.cpg.validation.RegexPatterns;
 import com.intel.mtwilson.jaxrs2.Document;
@@ -17,7 +16,6 @@ import com.intel.mtwilson.jaxrs2.Document;
  */
 @JacksonXmlRootElement(localName="tpm_endorsement")
 public class TpmEndorsement extends Document {
-//   private UUID id;
    private String hardwareUuid;
    @Regex(RegexPatterns.ANY_VALUE)
    private String issuer;
@@ -27,16 +25,6 @@ public class TpmEndorsement extends Document {
 
     public TpmEndorsement() {
     }
-
-    /*
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-    */
 
     public String getHardwareUuid() {
         return hardwareUuid;

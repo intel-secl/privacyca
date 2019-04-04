@@ -5,7 +5,6 @@
 package com.intel.mtwilson.privacyca.v2.model;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import com.intel.mtwilson.core.common.tpm.model.IdentityProofRequest;
 import com.intel.mtwilson.core.common.tpm.model.IdentityRequest;
 
 /**
