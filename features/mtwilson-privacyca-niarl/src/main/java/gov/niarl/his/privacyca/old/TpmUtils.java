@@ -36,7 +36,6 @@ import org.bouncycastle.jce.provider.*;
 import javax.crypto.*;
 import javax.crypto.spec.*;
 import com.intel.dcsg.cpg.crypto.RandomUtil;
-import java.util.BitSet;
 
 /**
  * <p>The utils class contains functions that fall into two categories: those that provide 
@@ -122,7 +121,6 @@ public class TpmUtils {
             try {
                 byte[] temp = IOUtils.toByteArray(source,4);
 
-                //int k = source.read(temp, 0, 4);
                 if ((temp[0] & 0x80) == 0x80) {
                     throw new TpmUnsignedConversionException("Cannot convert UINT32 to signed Integer: too large - would be converted to negative.");
                 }
@@ -154,9 +152,7 @@ public class TpmUtils {
 		}
 		int retval;
                 try {
-		//byte[] temp = new byte[2];
                 byte[] temp = IOUtils.toByteArray(source,2);
-		//int k = source.read(temp, 0, 2);
 		if ((temp[0]&0x80) == 0x80) throw new TpmUnsignedConversionException("Cannot convert UINT16 to signed Short: too large - would be converted to negative.");
 		retval = (int)((temp[0]<<8)&0x0000ff00) + 
 			 	 (int)((temp[1]<<0)&0x000000ff);
@@ -210,9 +206,7 @@ public class TpmUtils {
 			throw new TpmBytestreamResouceException("There are not enough available bytes in the bytestream to extract the requested number.");
 		}
                 try{
-		//byte[] retval = new byte[size];
                 byte[] retval = IOUtils.toByteArray(source, size);
-		//int k = source.read(retval, 0, size);
 		return retval;
                 }
                 catch (IOException e) {
@@ -538,7 +532,6 @@ public class TpmUtils {
 			String hexDigit = Integer.toHexString((int)blob[i] & 0xff).toUpperCase();
 			if (hexDigit.length() == 1)
 				hexDigit = "0" + hexDigit;
-//				hexDigit = sb.append("0").append(hexDigit).toString();
 			returnVal = sb.append(hexDigit).append(" ").toString();
 			if (((i+1)%perLine == 0) && (i < (blob.length - 1)))
 				returnVal = sb.append("\n").toString();
@@ -576,7 +569,6 @@ public class TpmUtils {
 				fis.close();
 		}
 		
-		//caKs.load(ConfigHelper.getResourceAsStream(filename), password.toCharArray());
 		Enumeration<String> aliases = caKs.aliases();
 		RSAPrivateKey privKey = null;
 		while(aliases.hasMoreElements()) {
@@ -640,8 +632,7 @@ public class TpmUtils {
 			javax.security.cert.CertificateException, 
 			java.security.cert.CertificateException {
 		try(InputStream certStream = new FileInputStream(filename)){
-    //		byte [] certBytes = new byte[certStream.available()];
-                    byte[] certBytes = IOUtils.toByteArray(certStream);                    
+                    byte[] certBytes = IOUtils.toByteArray(certStream);
                     javax.security.cert.X509Certificate cert = javax.security.cert.X509Certificate.getInstance(certBytes);
                     return convertX509Cert(cert);
                 }
@@ -662,7 +653,6 @@ public class TpmUtils {
 			throws CertificateException, 
 			CertificateEncodingException, 
 			java.security.cert.CertificateException{
-//		java.security.cert.CertificateFactory cf = java.security.cert.CertificateFactory.getInstance("X.509");
                 java.security.cert.CertificateFactory cf = java.security.cert.CertificateFactory.getInstance("X.509", new BouncyCastleProvider());
 		return (java.security.cert.X509Certificate)cf.generateCertificate(new ByteArrayInputStream(certBytes));
 	}
@@ -1160,7 +1150,6 @@ public class TpmUtils {
 	public static String getHostname(){
 		String hostname = "";
 		try{
-			//hostname = InetAddress.getLocalHost().getHostName();
 			hostname = InetAddress.getLocalHost().getCanonicalHostName();
 		}
 		catch (UnknownHostException u){

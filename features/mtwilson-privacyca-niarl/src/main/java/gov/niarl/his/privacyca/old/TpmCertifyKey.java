@@ -27,7 +27,6 @@ public class TpmCertifyKey {
     }
 
     public TpmCertifyKey(byte[] blob) throws TpmBytestreamResouceException, TpmUnsignedConversionException {
-        //ByteArrayInputStream bs = new ByteArrayInputStream(blob);
         try (ByteArrayInputStream bs = new ByteArrayInputStream(blob)) {
             structVer = TpmUtils.getBytes(bs, 4);
             tpmKeyUsage = TpmUtils.getUINT16(bs);

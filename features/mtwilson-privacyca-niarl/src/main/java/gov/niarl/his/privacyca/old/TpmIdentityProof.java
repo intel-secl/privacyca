@@ -140,8 +140,6 @@ public class TpmIdentityProof {
 		int labelSize = TpmUtils.getUINT32(bs);
 		int identBindingSize = TpmUtils.getUINT32(bs);
 		int ekCredSize = TpmUtils.getUINT32(bs);
-		//This is where things go wrong with no EK certificate!!
-		//if (ekCredSize == 0) throw new PrivacyCaException("PrivacyCaException: Error parsing TPM_IDENTITY_PROOF: there is no endorsement credential.");
 		int platformCredSize = TpmUtils.getUINT32(bs);
 		int conformCredSize = TpmUtils.getUINT32(bs);
 		Aik = new TpmPubKey(bs);
@@ -185,19 +183,12 @@ public class TpmIdentityProof {
 	 */
 	public byte [] toByteArray() 
 			throws TpmUtils.TpmUnsignedConversionException {
-		// Get byte elements of the proof
-	    //byte [] structVer - already exists in final form
-		byte [] labelSize = TpmUtils.intToByteArray(idLabelBytes.length); 
+		byte [] labelSize = TpmUtils.intToByteArray(idLabelBytes.length);
 		byte [] idBindingSize = TpmUtils.intToByteArray(idBindingBytes.length);
 		byte [] endorsementSize = TpmUtils.intToByteArray(ekCredBytes.length);
 		byte [] platformSize = TpmUtils.intToByteArray(ekCredBytes.length);
 		byte [] conformanceSize = TpmUtils.intToByteArray(ekCredBytes.length);
 		byte [] identityKey = Aik.toByteArray();
-		//byte [] idLabelBytes - already exists in final form
-		//byte [] idBindingBytes - already exists in final form
-		 //byte [] ekCredBytes - already exists in final form
-		//byte [] platformCredBytes - already exists in final form
-		 //byte [] conformCredBytes - already exists in final form
 		 // Assemble the return array
 		 byte [] toReturn = new byte[structVer.length + labelSize.length + idBindingSize.length + endorsementSize.length + platformSize.length + conformanceSize.length + 
 		  		                            identityKey.length + idLabelBytes.length + idBindingBytes.length + ekCredBytes.length + platformCredBytes.length + conformCredBytes.length];
@@ -292,7 +283,6 @@ public class TpmIdentityProof {
 		sig.initVerify(Aik.getKey());
 		sig.update(identityContents);
 		boolean bindingCheck = sig.verify(idBindingBytes);
-		//if (bindingCheck) System.out.println("bindingCheck is TRUE"); else System.out.println("bindingCheck is FALSE");
 		return bindingCheck;
 	}
 	/**

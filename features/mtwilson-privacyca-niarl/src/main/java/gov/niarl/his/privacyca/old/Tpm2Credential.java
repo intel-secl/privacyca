@@ -4,7 +4,6 @@
  */
 package gov.niarl.his.privacyca.old;
 
-import java.io.Serializable;
 
 /**
  * This class represents the repsonse to a TPM2_MakeCredential command.

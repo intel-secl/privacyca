@@ -53,7 +53,6 @@ public class TpmKey {
 			throws TpmBytestreamResouceException, 
 			TpmUnsignedConversionException{
             try (ByteArrayInputStream bs = new ByteArrayInputStream(blob)) {
-                //ByteArrayInputStream bs = new ByteArrayInputStream(blob);
                 structVer = TpmUtils.getBytes(bs, 4); //4 bytes
                 tpmKeyUsage = TpmUtils.getUINT16(bs); //uint16
                 tpmKeyFlags = TpmUtils.getUINT32(bs); //uint32
