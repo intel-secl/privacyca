@@ -4,6 +4,7 @@
  */
 package com.intel.mtwilson.tpm.endorsement.client.jaxrs;
 
+import com.intel.dcsg.cpg.tls.policy.TlsConnection;
 import com.intel.mtwilson.jaxrs2.client.MtWilsonClient;
 import com.intel.mtwilson.tpm.endorsement.model.TpmEndorsement;
 import com.intel.mtwilson.tpm.endorsement.model.TpmEndorsementCollection;
@@ -56,6 +57,10 @@ public class TpmEndorsements extends MtWilsonClient {
      */
     public TpmEndorsements(Properties properties) throws Exception {
         super(properties);
+    }
+
+    public TpmEndorsements(Properties properties, TlsConnection tlsConnection) throws Exception {
+        super(properties, tlsConnection);
     }
     
      /**
