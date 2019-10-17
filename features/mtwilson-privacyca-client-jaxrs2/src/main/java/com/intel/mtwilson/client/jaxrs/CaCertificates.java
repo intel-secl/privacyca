@@ -146,6 +146,21 @@ public class CaCertificates extends MtWilsonClient {
      * 2wzn8esuaBfEx0GGeJQyPDRV3fbpDON9sZRMLjS6pX99XeAdh+qJdjaW9CYsfi40k1vlZRK/Pt2H
      * gkVhnRnidYrMN5Qu4VqEQkd4Gz0jPJW+EfnbM+W/PvlWgDIZvhq7UfpjMA==
      * -----END CERTIFICATE-----
+     *  -----BEGIN CERTIFICATE-----
+     * MIIC0zCCAbugAwIBAgIJAP8y0d2XNaa0MA0GCSqGSIb3DQEBCwUAMCkxETAPBgNVBAsTCG10d2ls
+     * c29uMRQwEgYDVQQDEwttdHdpbHNvbi1jYTAeFw0xNDA0MjMwNDI0NTdaFw0xNTA0MjMwNDI0NTda
+     * MCkxETAPBgNVBAsTCG10d2lsc29uMRQwEgYDVQQDEwttdHdpbHNvbi1jYTCCASIwDQYJKoZIhvcN
+     * AQEBBQADggEPADCCAQoCggEBAL6r6DnRdQiuH8uHP/BboABxfwquWwzyX5OY5cjMxfR8RR4XhOi/
+     * govUzcFzOotwv6YUM49QVK0c3C4Q5dVuE3EX8PaU7KzCik6DcuMzFdHe4hQzoINIvjDKmW1A3lwp
+     * HKEnMTuYkbAnJToEg0G2ZhBX6Ye/kZvLaDpvBF84EJBDjxXKFksLWONyakRXOSLkfIshEvQF6kfz
+     * JxCPwxDHAU94svm2Wcl7GLKScr/MUiZxJSIX7GWZSt2LLLq6hQvXXw3XeQCdExmwOipYtAj7JI4u
+     * 7lO+bmpQX/UtIGePJCYAtogQ6KbZ+0EnJursdZH2sfJNPuPQ37JOsGf8G6Z+nyUCAwEAATANBgkq
+     * hkiG9w0BAQsFAAOCAQEAZbzmOBilsCwCRMakJT//U6kAZLo0DFhBU5ITPz+wGXcO5FcAOMZL3qou
+     * YbXL9H7KRMXHa6VcNOOkgoUjrjbOiZtzSWmyVZdjpyeT/9Lct7lLYY+MXMei9SMaiywtLCzAkHf4
+     * Ewpl8zaMSjs9baE/18/1SAneyXz6jwrZBua5GJWTDwiZidk3l9MfgRpStYaKXpiian0MTrvp0Lcc
+     * 2wzn8esuaBfEx0GGeJQyPDRV3fbpDON9sZRMLjS6pX99XeAdh+qJdjaW9CYsfi40k1vlZRK/Pt2H
+     * gkVhnRnidYrMN5Qu4VqEQkd4Gz0jPJW+EfnbM+W/PvlWgDIZvhq7UfpjMA==
+     * -----END CERTIFICATE-----
      * </pre></div>
      * @return X509Certificate in base 64 encoded format of the requested ID type.
      * @mtwSampleApiCall
@@ -160,7 +175,9 @@ public class CaCertificates extends MtWilsonClient {
      * </pre></div>
      */   
     public String searchCaCertificatesPem(CaCertificateFilterCriteria criteria) {
-        criteria.domain = "ek";
+        if(criteria.domain == null) {
+            criteria.domain = "ek";
+        }
         String certificatesPem = getTargetPathWithQueryParams("ca-certificates", criteria).request(CryptoMediaType.APPLICATION_X_PEM_FILE).get(String.class);
         return certificatesPem;
     }
