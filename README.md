@@ -1,3 +1,12 @@
+DISCONTINUATION OF PROJECT
+
+This project will no longer be maintained by Intel.
+
+Intel has ceased development and contributions including, but not limited to, maintenance, bug fixes, new releases, or updates, to this project.  
+
+Intel no longer accepts patches to this project.
+
+If you have an ongoing need to use this project, are interested in independently developing it, or would like to maintain patches for the open source software community, please create your own fork of this project.  
 # Intel<sup>®</sup> Security Libraries for Data Center  - Privacy CA
 #### This project provides an implementation of privacy certificate authority that is managed by the verification service. Each of the registered hosts for attestation provide the TPM measurements signed by the host's TPM generated Attestation Identity Key (AIK). The Privacy CA key is used as part of the certificate chain for the host AIK during Trust Agent provisioning and registration to the verification service.
 
